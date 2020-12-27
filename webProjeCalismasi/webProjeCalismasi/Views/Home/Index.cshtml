@@ -1,0 +1,40 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="~/css/loginPage.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <link href="~/Content/css/loginPage.css" rel="stylesheet">
+    <div class="login">
+        <h1>Login</h1>
+        <form method="post">
+            <input type="text" name="u" placeholder="Username" required="required" />
+            <input type="password" name="p" placeholder="Password" required="required" />
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Giriş Yap</button>
+            <br />
+        </form>
+        <button role="button" class="btn btn-primary btn-block btn-large" onclick="window.location.href = '/Home/Register';"> Üye Ol</button>
+       
+    </div>
+
+
+</body>
+
+</html>
