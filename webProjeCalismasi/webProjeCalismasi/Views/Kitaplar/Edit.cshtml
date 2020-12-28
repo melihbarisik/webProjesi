@@ -1,0 +1,49 @@
+﻿@model webProjeCalismasi.Models.Kitaplar
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Kitaplar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="KitaplarId" />
+            <div class="form-group">
+                <label asp-for="kitapIsmi" class="control-label"></label>
+                <input asp-for="kitapIsmi" class="form-control" />
+                <span asp-validation-for="kitapIsmi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kitapFiyat" class="control-label"></label>
+                <input asp-for="kitapFiyat" class="form-control" />
+                <span asp-validation-for="kitapFiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kitapResimUrl" class="control-label"></label>
+                <input asp-for="kitapResimUrl" class="form-control" />
+                <span asp-validation-for="kitapResimUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kitapSayfaSayisi" class="control-label"></label>
+                <input asp-for="kitapSayfaSayisi" class="form-control" />
+                <span asp-validation-for="kitapSayfaSayisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
