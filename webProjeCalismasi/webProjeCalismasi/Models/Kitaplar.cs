@@ -24,14 +24,11 @@ namespace webProjeCalismasi.Models
         [Required]
         public int kitapSayfaSayisi { get; set; }
 
-        
-        public int CategoryId { get; set; }
-        
-        
-        public int KullaniciId { get; set; }
+        [Required]
+        public Category Kategori { get; set; }
 
-        public Category Ka { get; set; }
-        public Kullanici Ku { get; set; }
+        [Required]
+        public Kullanici Kullanıcı { get; set; }
 
 
 

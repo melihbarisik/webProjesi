@@ -79,10 +79,10 @@ namespace webProjeCalismasi.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("KategoriCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<int>("KullaniciId")
+                    b.Property<int>("KullanıcıKullaniciId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("kitapFiyat")
@@ -103,30 +103,30 @@ namespace webProjeCalismasi.Migrations
 
                     b.HasKey("KitaplarId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("KategoriCategoryId");
 
-                    b.HasIndex("KullaniciId");
+                    b.HasIndex("KullanıcıKullaniciId");
 
                     b.ToTable("Kitaplar");
                 });
 
             modelBuilder.Entity("webProjeCalismasi.Models.Kitaplar", b =>
                 {
-                    b.HasOne("webProjeCalismasi.Models.Category", "Ka")
+                    b.HasOne("webProjeCalismasi.Models.Category", "Kategori")
                         .WithMany("Kitaplar")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("KategoriCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("webProjeCalismasi.Models.Entity.Kullanici", "Ku")
+                    b.HasOne("webProjeCalismasi.Models.Entity.Kullanici", "Kullanıcı")
                         .WithMany("Kitaplar")
-                        .HasForeignKey("KullaniciId")
+                        .HasForeignKey("KullanıcıKullaniciId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Ka");
+                    b.Navigation("Kategori");
 
-                    b.Navigation("Ku");
+                    b.Navigation("Kullanıcı");
                 });
 
             modelBuilder.Entity("webProjeCalismasi.Models.Category", b =>
