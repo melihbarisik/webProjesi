@@ -9,22 +9,22 @@ using webProjeCalismasi.Models;
 
 namespace webProjeCalismasi.Controllers
 {
-    public class KitaplarController : Controller
+    public class CategoriesController : Controller
     {
         private readonly MyContext _context;
 
-        public KitaplarController(MyContext context)
+        public CategoriesController(MyContext context)
         {
             _context = context;
         }
 
-        // GET: Kitaplar
+        // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Kitaplar.ToListAsync());
+            return View(await _context.Kategoriler.ToListAsync());
         }
 
-        // GET: Kitaplar/Details/5
+        // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace webProjeCalismasi.Controllers
                 return NotFound();
             }
 
-            var kitaplar = await _context.Kitaplar
-                .FirstOrDefaultAsync(m => m.KitaplarId == id);
-            if (kitaplar == null)
+            var category = await _context.Kategoriler
+                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(kitaplar);
+            return View(category);
         }
 
-        // GET: Kitaplar/Create
+        // GET: Categories/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Kitaplar/Create
+        // POST: Categories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("KitaplarId,kitapIsmi,kitapFiyat,kitapResimUrl,kitapSayfaSayisi")] Kitaplar kitaplar)
+        public async Task<IActionResult> Create([Bind("CategoryId,CategoryIsmi")] Category category)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(kitaplar);
+                _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(kitaplar);
+            return View(category);
         }
 
-        // GET: Kitaplar/Edit/5
+        // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace webProjeCalismasi.Controllers
                 return NotFound();
             }
 
-            var kitaplar = await _context.Kitaplar.FindAsync(id);
-            if (kitaplar == null)
+            var category = await _context.Kategoriler.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            return View(kitaplar);
+            return View(category);
         }
 
-        // POST: Kitaplar/Edit/5
+        // POST: Categories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("KitaplarId,kitapIsmi,kitapFiyat,kitapResimUrl,kitapSayfaSayisi")] Kitaplar kitaplar)
+        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryIsmi")] Category  category)
         {
-            if (id != kitaplar.KitaplarId)
+            if (id != category.CategoryId)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace webProjeCalismasi.Controllers
             {
                 try
                 {
-                    _context.Update(kitaplar);
+                    _context.Update(category);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KitaplarExists(kitaplar.KitaplarId))
+                    if (!CategoryExists(category.CategoryId))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace webProjeCalismasi.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(kitaplar);
+            return View(category);
         }
 
-        // GET: Kitaplar/Delete/5
+        // GET: Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +123,30 @@ namespace webProjeCalismasi.Controllers
                 return NotFound();
             }
 
-            var kitaplar = await _context.Kitaplar
-                .FirstOrDefaultAsync(m => m.KitaplarId == id);
-            if (kitaplar == null)
+            var category = await _context.Kategoriler
+                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(kitaplar);
+            return View(category);
         }
 
-        // POST: Kitaplar/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var kitaplar = await _context.Kitaplar.FindAsync(id);
-            _context.Kitaplar.Remove(kitaplar);
+            var category = await _context.Kategoriler.FindAsync(id);
+            _context.Kategoriler.Remove(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KitaplarExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.Kitaplar.Any(e => e.KitaplarId == id);
+            return _context.Kategoriler.Any(e => e.CategoryId == id);
         }
     }
 }

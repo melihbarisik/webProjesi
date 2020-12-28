@@ -6,25 +6,26 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using webProjeCalismasi.Models;
+using webProjeCalismasi.Models.Entity;
 
 namespace webProjeCalismasi.Controllers
 {
-    public class KitaplarController : Controller
+    public class KullanicilarController : Controller
     {
         private readonly MyContext _context;
 
-        public KitaplarController(MyContext context)
+        public KullanicilarController(MyContext context)
         {
             _context = context;
         }
 
-        // GET: Kitaplar
+        // GET: Kullanicilar
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Kitaplar.ToListAsync());
+            return View(await _context.Kullanicilar.ToListAsync());
         }
 
-        // GET: Kitaplar/Details/5
+        // GET: Kullanicilar/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +33,39 @@ namespace webProjeCalismasi.Controllers
                 return NotFound();
             }
 
-            var kitaplar = await _context.Kitaplar
-                .FirstOrDefaultAsync(m => m.KitaplarId == id);
-            if (kitaplar == null)
+            var kullanici = await _context.Kullanicilar
+                .FirstOrDefaultAsync(m => m.KullaniciId == id);
+            if (kullanici == null)
             {
                 return NotFound();
             }
 
-            return View(kitaplar);
+            return View(kullanici);
         }
 
-        // GET: Kitaplar/Create
+        // GET: Kullanicilar/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Kitaplar/Create
+        // POST: Kullanicilar/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("KitaplarId,kitapIsmi,kitapFiyat,kitapResimUrl,kitapSayfaSayisi")] Kitaplar kitaplar)
+        public async Task<IActionResult> Create([Bind("KullaniciId,kullaniciAdi,kullaniciSoyAdi,kullaniciAdresi,kullaniciTelNo,kullaniciMailAdresi")] Kullanici kullanici)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(kitaplar);
+                _context.Add(kullanici);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(kitaplar);
+            return View(kullanici);
         }
 
-        // GET: Kitaplar/Edit/5
+        // GET: Kullanicilar/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +73,22 @@ namespace webProjeCalismasi.Controllers
                 return NotFound();
             }
 
-            var kitaplar = await _context.Kitaplar.FindAsync(id);
-            if (kitaplar == null)
+            var kullanici = await _context.Kullanicilar.FindAsync(id);
+            if (kullanici == null)
             {
                 return NotFound();
             }
-            return View(kitaplar);
+            return View(kullanici);
         }
 
-        // POST: Kitaplar/Edit/5
+        // POST: Kullanicilar/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("KitaplarId,kitapIsmi,kitapFiyat,kitapResimUrl,kitapSayfaSayisi")] Kitaplar kitaplar)
+        public async Task<IActionResult> Edit(int id, [Bind("KullaniciId,kullaniciAdi,kullaniciSoyAdi,kullaniciAdresi,kullaniciTelNo,kullaniciMailAdresi")] Kullanici kullanici)
         {
-            if (id != kitaplar.KitaplarId)
+            if (id != kullanici.KullaniciId)
             {
                 return NotFound();
             }
@@ -96,12 +97,12 @@ namespace webProjeCalismasi.Controllers
             {
                 try
                 {
-                    _context.Update(kitaplar);
+                    _context.Update(kullanici);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KitaplarExists(kitaplar.KitaplarId))
+                    if (!KullaniciExists(kullanici.KullaniciId))
                     {
                         return NotFound();
                     }
@@ -112,10 +113,10 @@ namespace webProjeCalismasi.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(kitaplar);
+            return View(kullanici);
         }
 
-        // GET: Kitaplar/Delete/5
+        // GET: Kullanicilar/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +124,30 @@ namespace webProjeCalismasi.Controllers
                 return NotFound();
             }
 
-            var kitaplar = await _context.Kitaplar
-                .FirstOrDefaultAsync(m => m.KitaplarId == id);
-            if (kitaplar == null)
+            var kullanici = await _context.Kullanicilar
+                .FirstOrDefaultAsync(m => m.KullaniciId == id);
+            if (kullanici == null)
             {
                 return NotFound();
             }
 
-            return View(kitaplar);
+            return View(kullanici);
         }
 
-        // POST: Kitaplar/Delete/5
+        // POST: Kullanicilar/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var kitaplar = await _context.Kitaplar.FindAsync(id);
-            _context.Kitaplar.Remove(kitaplar);
+            var kullanici = await _context.Kullanicilar.FindAsync(id);
+            _context.Kullanicilar.Remove(kullanici);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KitaplarExists(int id)
+        private bool KullaniciExists(int id)
         {
-            return _context.Kitaplar.Any(e => e.KitaplarId == id);
+            return _context.Kullanicilar.Any(e => e.KullaniciId == id);
         }
     }
 }
