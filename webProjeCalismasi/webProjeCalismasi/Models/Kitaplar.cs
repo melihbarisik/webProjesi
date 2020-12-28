@@ -5,10 +5,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using webProjeCalismasi.Models.Entity;
 
+using System.Linq;
+using System.Threading.Tasks;
+
+
 namespace webProjeCalismasi.Models
 {
     public class Kitaplar
     {
+
         
         public int KitaplarId { get; set; }
 
@@ -35,3 +40,4 @@ namespace webProjeCalismasi.Models
     }
 }
     
+

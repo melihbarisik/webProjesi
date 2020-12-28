@@ -15,7 +15,9 @@ namespace webProjeCalismasi
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
             GetSqlConnection();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -23,6 +25,7 @@ namespace webProjeCalismasi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+
                 });
 
         public static void GetSqlConnection()
@@ -34,7 +37,7 @@ namespace webProjeCalismasi
                 try
                 {
                     connection.Open();
-                    Console.WriteLine("Baðlantý Saðlandý");
+                    Console.WriteLine("Baï¿½lantï¿½ Saï¿½landï¿½");
                 }
                 catch (Exception e)
                 {
@@ -48,5 +51,9 @@ namespace webProjeCalismasi
             }
 
         }
+
+                });  
+
+
     }
 }
