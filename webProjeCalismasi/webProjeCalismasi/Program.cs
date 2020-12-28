@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -15,7 +14,6 @@ namespace webProjeCalismasi
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-            GetSqlConnection();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -23,30 +21,7 @@ namespace webProjeCalismasi
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                });  
 
-        public static void GetSqlConnection()
-        {
-            string connectionString = @"Data Source = .\SQLEXPRESS;Initial Catalog=webProjeKitap;Integrated Security=SSP;";
-
-            using (var connection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    connection.Open();
-                    Console.WriteLine("Baðlantý Saðlandý");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                }
-                finally
-                {
-                    connection.Close();
-                }
-
-            }
-
-        }
     }
 }
