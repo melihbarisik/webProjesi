@@ -1,0 +1,53 @@
+﻿@model IEnumerable<webProjeCalismasi.Models.Kitaplar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.kitapIsmi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kitapFiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kitapResimUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kitapSayfaSayisi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.kitapIsmi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kitapFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kitapResimUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kitapSayfaSayisi)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.KitaplarId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.KitaplarId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.KitaplarId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
