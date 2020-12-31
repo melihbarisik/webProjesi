@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using webProjeV2.Models;
@@ -23,6 +24,7 @@ namespace webProjeV2.Controllers
             return View();
         }
 
+        [Authorize(Roles="Admin")]
         public IActionResult Privacy()
         {
             return View();
