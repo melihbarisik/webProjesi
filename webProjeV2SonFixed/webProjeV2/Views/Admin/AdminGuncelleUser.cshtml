@@ -1,0 +1,50 @@
+﻿@model webProjeV2.Models.Kullanici
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="~/css/loginPage.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="login">
+        <h1>Kullanıcı Güncelle</h1>
+        <form method="post" asp-action="AdminKullaniciGüncelleVeritabani" asp-controller="Admin">
+
+            <input type="hidden" value="@Model.Id" name="Id" />
+            <input value="@Model.UserName" type="text" name="UserName" placeholder="UserName" required="required" />
+            <input value="@Model.KullaniciAdVeSoyad" type="text" name="KullaniciAdVeSoyad" placeholder="KullaniciAdVeSoyad" required="required" />
+           
+            <label asp-for="@Model.KullaniciCinsiyet"></label>
+            <select asp-for="@Model.KullaniciCinsiyet">
+                <option disabled>Cinsiyet Seçiniz</option>
+                <option value="Kadın">Kadın</option>
+                <option value="Erkek">Erkek</option>
+            </select>
+            
+            <input value="@Model.DogumTarihi" type="date" name="DogumTarihi" placeholder="DogumTarihi" required="required" />
+            <input value="@Model.Email" type="email" name="Email" placeholder="Email" required="required" />
+            
+            <button type="submit" class="btn btn-primary btn-block btn-large"> Kullanıcı Güncelle</button>
+
+        </form>
+    </div>
+
+
+</body>
+
+</html>
+

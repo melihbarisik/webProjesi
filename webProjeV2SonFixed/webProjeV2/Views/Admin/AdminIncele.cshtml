@@ -1,0 +1,35 @@
+﻿@model webProjeV2.Models.Kitap
+@using webProjeV2.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+
+<div class="row">
+    <div class="col-lg-6 col-md-10 mb-6">
+        <div class="contact-form text-light">
+            <img class="card-img-top" style="width:280px;height: 400px"  src="@Model.kitapResimUrl" alt="">
+            <div class="card-body">
+                <h4 class="card-title">
+                    <p>@Model.kitapIsmi</p>
+                </h4>
+
+                <p>Ortalama Fiyat :@Model.kitapFiyat TL</p>
+                <p>Kategori :@Model.kitapKategori</p>
+                <p>Sayfa Sayısı :@Model.kitapSayfaSayisi</p>
+                <p>Özeti :@Model.kitapAciklama</p>
+
+            </div>
+
+            
+        </div>
+    </div>
+
+
+
+</div>
+
+
+
+
+

@@ -1,0 +1,109 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@model List<webProjeV2.Models.Kitap>
+
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = LocOptions.Value.SupportedUICultures
+        .Select(c => new SelectListItem { Value = c.Name, Text = c.DisplayName })
+        .ToList();
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        li {
+            float: left;
+        }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+                li a:hover:not(.active) {
+                    background-color: #808080;
+                }
+    </style>
+</head>
+<body>
+
+    <select onchange="SetCulture(this.value)" asp-for="@requestCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+    </select>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+    @{
+        string culture = "", uiculture = "";
+        if (Context.Request.QueryString.HasValue)
+        {
+            string url = Context.Request.QueryString.Value;
+            culture = Context.Request.Query["culture"];
+            uiculture = Context.Request.Query["ui-culture"];
+        }
+    }
+    <ul class="text-light">
+        <li><a asp-action="Index" asp-controller="Admin">Kitaplar</a></li>
+        <li><a asp-action="IndexUsers" asp-controller="Admin">Kullanıcılar</a></li>
+    </ul>
+
+</body>
+</html>
+
+
+
+
+<form asp-action="AdminEkle" asp-controller="Admin">
+    <p><input type="submit" value="Ekle" /></p>
+</form>
+
+<form runat="server" class="text-white">
+    <div style="margin-top:15px 0px 0px 5px">
+        <table class="table-bordered text-white">
+            <tr>
+                <th>@Localizer["isim"]</th>
+                <th>@Localizer["fiyat"]</th>
+                <th>@Localizer["kategori"]</th>
+                <th>@Localizer["sayfasayisi"]</th>
+                <th>@Localizer["aciklama"]</th>
+                <th>@Localizer["incele"]</th>
+                <th>@Localizer["guncelle"]</th>
+                <th>@Localizer["sil"]</th>
+            </tr>
+
+
+
+            @foreach (var kitap in Model)
+            {
+
+                @await Html.PartialAsync("AdminListe", kitap)
+
+            }
+
+        </table>
+    </div>
+</form>
+
+<script>
+    function SetCulture(selectedValue) {
+        alert(selectedValue);
+        var url = window.location.href.split('?')[0];
+        var culture = "?culture=" + selectedValue + "&ui-culture=" + selectedValue;
+        window.location.href = url + culture;
+    }
+</script>   

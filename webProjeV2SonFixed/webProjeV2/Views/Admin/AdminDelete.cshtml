@@ -1,0 +1,65 @@
+﻿@model webProjeV2.Models.Kitap
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+    ViewData["Title"] = "AdminDelete";
+}
+
+<h1>Kitap Silme Paneli</h1>
+
+<h3></h3>
+<div>
+    <h4>Kitaplar</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KitapId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KitapId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.kitapIsmi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.kitapIsmi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.kitapFiyat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.kitapFiyat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.kitapResimUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.kitapResimUrl)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.kitapSayfaSayisi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.kitapSayfaSayisi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.kitapAciklama)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.kitapAciklama)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.kitapKategori)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.kitapKategori)
+        </dd>
+    </dl>
+
+    <form asp-action="AdminDelete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Üyelik Tamamlama";
+}
+
+<h1 class="text-light">@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+        <p class="text-light">
+            <a href="https://aka.ms/aspaccountconf"></a>
+            <a id="confirm-link" class="text-light" href="@Model.EmailConfirmationUrl">Hesabınız Aktif Etmek İçin Tıklayınız.</a>
+        </p>
+    }
+    else
+    {
+        <p>
+
+        </p>
+    }
+}

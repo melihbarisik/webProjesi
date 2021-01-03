@@ -1,0 +1,36 @@
+﻿@model webProjeV2.Models.Kitap
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<tr>
+    <td>@Model.kitapIsmi</td>
+    <td>@Model.kitapFiyat</td>
+    <td>@Model.kitapKategori</td>
+    <td>@Model.kitapSayfaSayisi</td>
+    <td>@Model.kitapAciklama</td>
+
+    @using (Html.BeginForm("AdminIncele", "Admin", new { id = Model.KitapId }, FormMethod.Post))
+    {
+
+        <td><input type="submit" value="İncele" /></td>
+
+    }
+    @using (Html.BeginForm("AdminGuncelle", "Admin", new { id = Model.KitapId }, FormMethod.Post))
+    {
+
+
+        <td><input type="submit" value="Güncelle" /></td>
+
+
+    }
+    @using (Html.BeginForm("AdminSil", "Admin", new { id = Model.KitapId }, FormMethod.Post))
+    {
+
+
+        <td><input type="submit" value="Sil" /></td>
+
+
+    }
+</tr>
+

@@ -1,0 +1,35 @@
+﻿@model webProjeV2.Models.Kitap
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<div class="col-lg-4 col-md-6 mb-4">
+    <div class="contact-form text-light">
+
+        <a href="#"><img class="card-img-top" style="width:290px;height: 380px" src="@Model.kitapResimUrl" alt=""></a>
+
+        <h4>
+            <p>@Model.kitapIsmi</p>
+        </h4>
+
+        <p>@Localizer["OrtalamaFiyat"] :@Model.kitapFiyat TL</p>
+        <p>@Localizer["Kategori"] :@Model.kitapKategori</p>
+
+
+
+
+
+        @using (Html.BeginForm("KitapGorunum", "Kitap", new { id = Model.KitapId }, FormMethod.Post))
+        {
+            <div>
+                <p><input type="submit" value="@Localizer["Incele"]" /></p>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+@{
+   
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="~/css/loginPage.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <div class="login">
+        <h1>Kitap Kayıt Et</h1>
+        <form method="post" asp-action="AdminKitapEkleVeritabani" asp-controller="Admin">
+
+            <input type="text" name="kitapIsmi" placeholder="Kitap İsmi" required="required" />
+            <input type="number" name="kitapFiyat" placeholder="Kitap Fiyat" required="required" />
+            <input type="text" name="kitapResimUrl" placeholder="Kitap Resmi Url" required="required" />
+            <input type="number" name="kitapSayfaSayisi" placeholder="Kitap Sayfa Sayisi" required="required" />
+            <input type="text" name="kitapAciklama" placeholder="Kitap Açıklaması" required="required" />
+            <input type="text" name="kitapKategori" placeholder="Kitap Kategorisi" required="required" />
+
+
+            <button type="submit" class="btn btn-primary btn-block btn-large"> Kitabı Ekle</button>
+
+        </form>
+    </div>
+
+
+</body>
+
+</html>
+

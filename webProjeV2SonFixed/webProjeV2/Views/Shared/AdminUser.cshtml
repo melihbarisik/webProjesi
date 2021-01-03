@@ -1,0 +1,31 @@
+﻿@model webProjeV2.Models.Kullanici
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer Localizer
+
+<tr>
+    <td>@Model.KullaniciAdVeSoyad</td>
+    <td>@Model.KullaniciCinsiyet</td>
+    <td>@Model.DogumTarihi</td>
+    <td>@Model.Email</td>
+
+
+    @using (Html.BeginForm("AdminGuncelleUser", "Admin", new { id = Model.Id }, FormMethod.Post))
+    {
+
+
+        <td><input type="submit" value="Güncelle" /></td>
+
+
+    }
+    @using (Html.BeginForm("AdminSilUser", "Admin", new { id = Model.Id }, FormMethod.Post))
+    {
+
+
+        <td><input type="submit" value="Sil" /></td>
+
+
+    }
+</tr>
+
+
