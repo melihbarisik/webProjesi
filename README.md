@@ -5,3 +5,6 @@ Bu projede ele aldığımız konu günümüz tüketim toplumunun belki de en bü
 Projede esinlendiğimiz platform ise film, dizi gibi içerikleri tanıtan, insanların oy verip yorum yaptığı ve bu içeriklerle ilgili bilgiler edindiği platform olan IMDb oldu. Birçok dizi ve film içerisinden kendimize uygun olanı ve izlemeye değer olduğuna dair ortak kanaat verilen dizileri seçmek bizler için zaman tasarrufu açısından çok önemli. Bizde bu konsepti kendi yaptığımız projeye uygulamaya çalıştık. 
 
 Projede kullanıcılar istedikleri kategoride kitapları görüntüleyebilirler. Bu kitaplar hakkında bilgi edinebilir, başka insanların kitap hakkındaki düşüncelerini okuyabilir, siteye kaydolmak şartıyla kitaplara yorum yazabilir ve puan verebilirler. Sitenin adminleriyse sisteme kitap ekleyebilir, kitapları ve kullanıcıları düzenleyebilir, gerek gördüğünde kullanıcı ve kitapları sistemden kaldırabilirler. 
+
+
+Projede öncelikle temel yapıyı oluşturuk daha sonra eklemeler oldukça rapoyu da güncelledik. Bazı durumlarda projemizi farklı alanlara taşıdığımız için isimde değişiklik yapıp kökten dosya değişimi yaptık. Yapılan ilerlemeri commitler yardımı ile eklemeye çalıştık.
