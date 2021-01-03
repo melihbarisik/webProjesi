@@ -28,7 +28,7 @@
             <input value="@Model.UserName" type="text" name="UserName" placeholder="UserName" required="required" />
             <input value="@Model.KullaniciAdVeSoyad" type="text" name="KullaniciAdVeSoyad" placeholder="KullaniciAdVeSoyad" required="required" />
            
-            <label asp-for="@Model.KullaniciCinsiyet"></label>
+            <label class="text-light" asp-for="@Model.KullaniciCinsiyet"></label>
             <select asp-for="@Model.KullaniciCinsiyet">
                 <option disabled>Cinsiyet Seçiniz</option>
                 <option value="Kadın">Kadın</option>
